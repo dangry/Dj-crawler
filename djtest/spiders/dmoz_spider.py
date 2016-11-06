@@ -122,15 +122,15 @@ class DmozSpider(scrapy.Spider):
             # testString = testString.replace(" ( )", "")
             # testString = testString.replace(u"\u00A0", " ")
 
-            if var2[0] == 'ID':
-                # If the number is less than 10 we want to add an extra 0 to the string
-                if i < 10:
-                    item['songNumber'] = u'0' + str(i+1)
-                else:
-                    # If the index is more than 10 we don't want to add the extra 0
-                    item['songNumber'] = u'' + str(i)
-            else:
-                item['songNumber'] = ', '.join(sel.xpath('.//span[contains(@id, "tracknumber_value")]/text()').extract())
+            # if var2[0] == 'ID':
+            #     # If the number is less than 10 we want to add an extra 0 to the string
+            #     if i < 10:
+            #         item['songNumber'] = u'0' + str(i+1)
+            #     else:
+            #         # If the index is more than 10 we don't want to add the extra 0
+            #         item['songNumber'] = u'' + str(i)
+            # else:
+            item['songNumber'] = ', '.join(sel.xpath('.//span[contains(@id, "tracknumber_value")]/text()').extract())
             # item['artistName'] =  ''.join(var2[0]).encode('utf-8')
             item['artistName'] =  var2[0]
             try:
